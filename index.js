@@ -24,9 +24,6 @@ function getHumanChoice() {
   }
 }
 
-let humanScore = 0;
-let computerScore = 0;
-
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
     return "It's a Tie!";
@@ -49,6 +46,21 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-console.log(playRound(humanSelection, computerSelection));
+let humanScore = 0;
+let computerScore = 0;
+
+function playGame() {
+  let round = 1;
+  for (i = 0; i < 5; i++) {
+    console.log("Round: " + round);
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    console.log(playRound(humanSelection, computerSelection));
+    console.log(
+      "The Score is:\nYou: " + humanScore + " Computer: " + computerScore
+    );
+    round++;
+  }
+}
+
+console.log(playGame());
