@@ -10,23 +10,45 @@ function getComputerChoice() {
   }
 }
 
-console.log(getComputerChoice());
-
 function getHumanChoice() {
   let choice = prompt("Please choose rock, paper or scissors.");
 
   if (choice == "rock") {
-    return "You chose rock.";
+    return "rock";
   } else if (choice == "paper") {
-    return "You chose paper.";
+    return "paper";
   } else if (choice == "scissors") {
-    return "You chose scissors";
+    return "scissors";
   } else {
     return "Invalid Input.";
   }
 }
 
-console.log(getHumanChoice());
-
 let humanScore = 0;
 let computerScore = 0;
+
+function playRound(humanChoice, computerChoice) {
+  if (humanChoice === computerChoice) {
+    return "It's a Tie!";
+  } else if (
+    (humanChoice === "rock" && computerChoice === "scissors") ||
+    (humanChoice === "paper" && computerChoice === "rock") ||
+    (humanChoice === "scissors" && computerChoice === "paper")
+  ) {
+    humanScore++;
+    return "You win! " + humanChoice + " beats " + computerChoice + ".";
+  } else if (
+    (humanChoice === "rock" && computerChoice === "paper") ||
+    (humanChoice === "paper" && computerChoice === "scissors") ||
+    (humanChoice === "scissors" && computerChoice === "rock")
+  ) {
+    computerScore++;
+    return "You lose! " + computerChoice + " beats " + humanChoice + ".";
+  } else {
+    return "Invalid Input.";
+  }
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+console.log(playRound(humanSelection, computerSelection));
